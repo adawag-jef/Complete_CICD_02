@@ -8,7 +8,6 @@ pipeline {
 		SONAR_PROJECT_KEY = 'complete-cicd'
 		SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
 		DOCKER_HUB_REPO = 'jefadawag/complete-cicd'
-		DOCKER_HOME = tool 'Docker'
 	}
 	stages {
 		stage('Github') {
