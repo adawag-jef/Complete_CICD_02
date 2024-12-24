@@ -39,7 +39,6 @@ pipeline {
 		}
 		stage('Docker Image') {
 			steps {
-        			env.PATH = "${DOCKER_HOME}/bin:${env.PATH}"
 				script {
 					docker.build("${DOCKER_HUB_REPO}:latest")
 				}
