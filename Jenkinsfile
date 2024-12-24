@@ -8,6 +8,7 @@ pipeline {
 		SONAR_PROJECT_KEY = 'complete-cicd'
 		SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
 		DOCKER_HUB_REPO = 'jefadawag/complete-cicd'
+		DOCKER_HOME = tool 'Docker'
 	}
 	stages {
 		stage('Github') {
@@ -38,8 +39,7 @@ pipeline {
 		}
 		stage('Docker Image') {
 			steps {
-				dockerHome = tool 'Docker'
-        			env.PATH = "${dockerHome}/bin:${env.PATH}"
+        			env.PATH = "${DOCKER_HOME}/bin:${env.PATH}"
 				script {
 					docker.build("${DOCKER_HUB_REPO}:latest")
 				}
