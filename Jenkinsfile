@@ -21,18 +21,11 @@ pipeline {
 				sh 'npm test'
 			}
 		}
-		stage('SonarQube Analysis') {
+
+		stage('Docker Image') {
 			steps {
-				withCredentials([string(credentialsId: 'complete-cicd-token', variable: 'SONAR_TOKEN')]) {
-				   	withSonarQubeEnv('SonarQube') {
-						sh """
-	 					${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-       						-Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-	     					-Dsonar.sources=. \
-	   					-Dsonar.host.url=http://sonarqube:9000 \
-	 					-Dsonar.login=${SONAR_TOKEN}
-       						"""
-					}
+				script {
+					docker.build("${DOCKER_HUB_REPO}:latest")
 				}
 			}
 		}
