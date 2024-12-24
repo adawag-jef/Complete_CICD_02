@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('Docker Image') {
 			steps {
-				def dockerHome = tool 'Docker'
+				dockerHome = tool 'Docker'
         			env.PATH = "${dockerHome}/bin:${env.PATH}"
 				script {
 					docker.build("${DOCKER_HUB_REPO}:latest")
