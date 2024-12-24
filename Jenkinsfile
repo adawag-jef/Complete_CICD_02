@@ -5,7 +5,7 @@ pipeline {
 		
 	}
 	environment {
-		SONAR_PROJECT_KEY = 'complete-cicd
+		SONAR_PROJECT_KEY = 'complete-cicd'
 		SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
 	}
 	stages {
